@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html dir="ltr" lang="en-US">
 
   {% include head.html %}
 
-  <body>
+  <body class="stretched side-push-panel">
 
-    {% include header.html %}
+  {% include sidepanel.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+  <!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
 
-    {% include footer.html %}
+  {% include header.html %}
 
-  </body>
+  {{ content }}
 
-</html>
+  {% include footer.html %}
+
+  </div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="/js/functions.js"></script>
+
+</body>
