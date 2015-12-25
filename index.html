@@ -31,7 +31,7 @@ layout: default
 					<h1 style="line-height: 1.4;font-size: 24px;">Receive the lastest mobile marketing information</h1>
 					<span style="font-size:16px; top-margin: 20px;" class="t300">Out of Bounds knows China like no other. We'll keep you informed about new opportunities and service offerings.</span>
 				</div>
-				<div id="slider-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+				<div id="slider-subscribe-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Thank you, we'll be in touch!"></div>
 
 				<form id="slider-subscribe-form" method="post" action="https://oomens.email-provider.nl/subscribe/post/index.php" accept-charset="utf-8" class="nobottommargin">
 					<input type="hidden" name="next" value="" />
@@ -54,17 +54,19 @@ layout: default
 						submitHandler: function(form) {
 							var formButton = $(form).find('button'),
 								formButtonText = formButton.html();
-
 							formButton.html('<i class="icon-line-loader icon-spin nomargin"></i>');
 							$(form).ajaxSubmit({
-								target: '#slider-subscribe-form-result',
+								// target: '#slider-subscribe-form-result',
 								success: function() {
-									formButton.html( formButtonText );
-									$(form).find('.sm-form-control').val('');
-									$('#slider-subscribe-form-result').attr('data-notify-msg', $('#slider-subscribe-form-result').html()).html('');
-									SEMICOLON.widget.notifications($('#slider-subscribe-form-result'));
+									// This is a hackish solutions; I had better rely on the
+									// LaPosta API instead
 								}
 							});
+
+							formButton.html( formButtonText );
+							$(form).find('.sm-form-control').val('');
+							// $('#slider-subscribe-form-result').attr('data-notify-msg', $('#slider-subscribe-form-result').html()).html('');
+							SEMICOLON.widget.notifications($('#slider-subscribe-form-result'));
 						}
 					});
 				</script>
@@ -436,15 +438,12 @@ layout: default
 				<div id="oc-clients" class="owl-carousel topmargin image-carousel">
 
 					<div class="oc-item"><img src="/img/cwa.png" alt="China Wireless Arts	"></div>
-					<div class="oc-item"><img src="/img/feiliu.jpg" alt="Feiliu"></div>
+					<div class="oc-item"><img src="/img/feiliu.png" alt="Feiliu"></div>
 					<div class="oc-item"><img src="/img/sohu.jpg" alt="Sohu"></div>
 					<div class="oc-item"><img src="/img/youku.jpg" alt="Youku"></div>
-					<div class="oc-item"><img src="../images/clients/5.png" alt="Clients"></div>
-					<div class="oc-item"><img src="../images/clients/6.png" alt="Clients"></div>
-					<div class="oc-item"><img src="../images/clients/7.png" alt="Clients"></div>
-					<div class="oc-item"><img src="../images/clients/8.png" alt="Clients"></div>
-					<div class="oc-item"><img src="../images/clients/9.png" alt="Clients"></div>
-					<div class="oc-item"><img src="../images/clients/10.png" alt="Clients"></div>
+					<div class="oc-item"><img src="/img/inmobi.png" alt="Inmobi"></div>
+					<div class="oc-item"><img src="/img/elong.png" alt="Elong"></div>
+					<div class="oc-item"><img src="/img/banana-apps.png" alt="Banana Apps"></div>
 
 				</div>
 
@@ -543,45 +542,39 @@ layout: default
 
 				<div class="divcenter topmargin" style="max-width: 850px;">
 
-					<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+					<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Thanks, we'll get back to you as soon as possible!"></div>
 
-					<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
+					<form class="nobottommargin" id="template-contactform" name="template-contactform" action="//formspree.io/info@outofbounds.technology" method="post">
 
 						<div class="form-process"></div>
 
 						<div class="col_half">
-							<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="Name" />
+							<input type="text" id="template-contactform-name" name="name" value="" class="sm-form-control border-form-control required" placeholder="Name" />
 						</div>
 						<div class="col_half col_last">
-							<input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control border-form-control" placeholder="Email Address" />
-						</div>
-
-						<div class="clear"></div>
-
-						<div class="col_one_third">
-							<input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class="sm-form-control border-form-control" placeholder="Phone" />
-						</div>
-
-						<div class="col_two_third col_last">
-							<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control border-form-control" placeholder="Subject" />
+							<input type="email" id="template-contactform-email" name="email" value="" class="required email sm-form-control border-form-control" placeholder="Email Address" />
 						</div>
 
 						<div class="clear"></div>
 
 						<div class="col_full">
-							<textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="template-contactform-message" rows="7" cols="30" placeholder="Your Message"></textarea>
+							<input type="text" id="template-contactform-subject" name="subject" value="" class="required sm-form-control border-form-control" placeholder="Subject" />
+						</div>
+
+						<div class="col_full">
+							<textarea class="required sm-form-control border-form-control" id="template-contactform-message" name="message" rows="7" cols="30" placeholder="Your Message"></textarea>
 						</div>
 
 						<div class="col_full center">
-							<button class="button button-border button-circle t500 noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+							<button class="button button-border button-circle t500 noleftmargin topmargin-sm" type="submit" id="template-contactform-submit" name="submit" value="submit">Send Message</button>
 							<br>
-							<small style="display: block; font-size: 13px; margin-top: 15px;">We'll do our best to get back to you within 6-8 working hours.</small>
+							<small style="display: block; font-size: 13px; margin-top: 15px;">We'll do our best to get back to you within one working day.</small>
 						</div>
 
 						<div class="clear"></div>
 
 						<div class="col_full hidden">
-							<input type="text" id="template-contactform-botcheck" name="template-contactform-botcheck" value="" class="sm-form-control" />
+							<input type="text" id="template-contactform-botcheck" name="_gotcha" value="" class="sm-form-control" />
 						</div>
 
 					</form>
@@ -592,11 +585,12 @@ layout: default
 							submitHandler: function(form) {
 								$('.form-process').fadeIn();
 								$(form).ajaxSubmit({
-									target: '#contact-form-result',
+									dataType: 'json',
+									// target: '#contact-form-result',
 									success: function() {
 										$('.form-process').fadeOut();
 										$(form).find('.sm-form-control').val('');
-										$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
+										// $('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');
 										SEMICOLON.widget.notifications($('#contact-form-result'));
 									}
 								});
